@@ -16,7 +16,7 @@ class Board:
 
 	#returns (-1, -1) if illegal move, otherwise returns move with right coords
 	def convertMove(self, row, col):
-		if (row < 1 || col < 1 || row > 8 || col > 8):
+		if (row < 1 or col < 1 or row > 8 or col > 8):
 			return (-1, -1)
 		return (row-1, col-1)
 
@@ -35,7 +35,7 @@ class Board:
 	def isLegalMove(self, turn, moves):
 		for i in range (0, len(moves)):
 			moves[i] = moves[i] - 1
-			if (moves[i] < 0 || moves[i] > 7):
+			if (moves[i] < 0 or moves[i] > 7):
 				return False
 		if (len(moves) == 2):
 			#removing
@@ -57,7 +57,7 @@ class Board:
 				if (curRow == nextRow):
 					if (abs(curCol-nextCol) == 2):
 						#
-						if (matrix[curRow][curCol] == turn && matrix[nextRow][nextCol] == '.' && matrix[curRow][(curCol+nextCol)/2] != turn && matrix[curRow][(curCol+nextCol)/2] != '.'):
+						if ((matrix[curRow][curCol] == turn) and (matrix[nextRow][nextCol] == '.') and (matrix[curRow][(curCol+nextCol)/2] != turn) and (matrix[curRow][(curCol+nextCol)/2] != '.')):
 							matrix[curRow][curCol] = '.'
 							matrix[curRow][(curCol+nextCol)/2] = '.'
 							matrix[nextRow][nextCol] = turn
